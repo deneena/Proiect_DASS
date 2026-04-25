@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Tickets</h2>
+
+<p><a href="{{ url_for('create_ticket') }}">+ Create Ticket</a></p>
+<div class="form">
+<form method="get">
+    <input type="text" name="search" placeholder="Search..." value="{{ request.args.get('search', '') }}">
+
+    <select name="severity">
+        <option value="">All Severity</option>
+        <option value="LOW">Low</option>
+        <option value="MED">Medium</option>
+        <option value="HIGH">High</option>
+    </select>
+
+    <select name="status">
+        <option value="">All Status</option>
+        <option value="OPEN">Open</option>
+        <option value="IN_PROGRESS">In Progress</option>
+        <option value="RESOLVED">Resolved</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+</div>
+
+<br>
+
+<div class="form">
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Severity</th>
+        <th>Status</th>
+        <th>Owner</th>
+        <th>Action</th>
+    </tr>
+
+    {% for t in tickets %}
+    <tr>
+        <td>{{ t["id"] }}</td>
+        <td>{{ t["title"] }}</td>
+        <td>{{ t["severity"] }}</td>
+        <td>{{ t["status"] }}</td>
+        <td>{{ t["owner_email"] }}</td>
+        <td>
+            <a href="{{ url_for('edit_ticket', id=t['id']) }}">Edit</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}

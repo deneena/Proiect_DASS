@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Audit Logs</h2><br><br><br><br><br>
+
+<div class="form">
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Action</th>
+        <th>Resource</th>
+        <th>Resource ID</th>
+        <th>Timestamp</th>
+        <th>IP</th>
+    </tr>
+    {% for log in logs %}
+    <tr>
+        <td>{{ log["id"] }}</td>
+        <td>{{ log["user_id"] }}</td>
+        <td>{{ log["action"] }}</td>
+        <td>{{ log["resource"] }}</td>
+        <td>{{ log["resource_id"] }}</td>
+        <td>{{ log["timestamp"] }}</td>
+        <td>{{ log["ip_address"] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}

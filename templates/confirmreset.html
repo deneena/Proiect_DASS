@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Confirm Reset</h2>
+
+<div class="form">
+<form method="post">
+    <label>Token</label><br/>
+    <input name="token" /><br/><br/>
+    <label>New password</label><br/>
+    <input name="password1" type="password" id="pw1"/>
+    <input type="checkbox" onclick="pwVisibility('pw1')">Show Password<br/>
+    <label>Confirm password</label><br/>
+    <input name="password2" type="password" id="pw2"/>
+    <input type="checkbox" onclick="pwVisibility('pw2')">Show Password<br/><br/>
+    <button type="submit">Reset Password</button>
+</form>
+</div>
+
+<script>
+function pwVisibility(id) {
+    var x = document.getElementById(id);
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+
+{% endblock %}

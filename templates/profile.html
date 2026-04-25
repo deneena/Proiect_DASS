@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Profile</h2>
+
+<p><b>Email:</b> {{ user["email"] }}</p>
+<p><b>Role:</b> {{ user["role"] }}</p>
+
+<p><a href="{{ url_for('list_tickets') }}">Tickets</a></p>
+{% if user["role"] == "manager" %}
+<p><a href="{{ url_for('audit_logs') }}">Audit Logs</a></p>
+{% endif %}
+
+{% endblock %}

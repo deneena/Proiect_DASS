@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Login</h2>
+<div class="form">
+<form method="post">
+    <label>Email</label><br/>
+    <input name="email" /><br/><br/>
+    <label>Password</label><br/>
+    <input name="password" type="password" id="pw"/><br/><br/>
+    <input type="checkbox" onclick="pwVisibility()">Show Password<br/><br/>
+    <button type="submit">Login</button>
+    <button onclick="window.location.href='resetpw'" type="button">Forgot password</button>
+</form>
+</div>
+
+<script>
+    function pwVisibility() {
+        var x = document.getElementById("pw");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or "Secure Flask Lab" }}</title>
+{#    <link rel="stylesheet" href="styles.css">#}
+    <style>
+    body {
+        background-color: darkseagreen;
+    }
+
+    h2 {
+        align-content: center;
+        color: black;
+        text-align: center;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        font-family: "Times New Roman";
+    }
+
+    p{
+        align-content: center;
+        color: black;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+    {% if session.get("user_id") %}
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <form action="{{ url_for('logout') }}" method="post" style="display:inline;">
+        <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a> |
+        <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for msg in messages %}
+            <li>{{ msg }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <hr/>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

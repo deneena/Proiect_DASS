@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Ticket</h2>
+
+<div class="form">
+<form method="post">
+    <input type="text" name="title" value="{{ ticket['title'] }}" required><br><br>
+    <textarea name="description" required>{{ ticket['description'] }}</textarea><br><br>
+    <select name="severity">
+        <option value="LOW" {% if ticket["severity"] == "LOW" %}selected{% endif %}>Low</option>
+        <option value="MED" {% if ticket["severity"] == "MED" %}selected{% endif %}>Medium</option>
+        <option value="HIGH" {% if ticket["severity"] == "HIGH" %}selected{% endif %}>High</option>
+    </select><br><br>
+    {% if user["role"] == "manager" %}
+    <select name="status">
+        <option value="OPEN" {% if ticket["status"] == "OPEN" %}selected{% endif %}>Open</option>
+        <option value="IN_PROGRESS" {% if ticket["status"] == "IN_PROGRESS" %}selected{% endif %}>In Progress</option>
+        <option value="RESOLVED" {% if ticket["status"] == "RESOLVED" %}selected{% endif %}>Resolved</option>
+    </select><br><br>
+    {% endif %}
+    <button type="submit">Save</button>
+</form>
+</div>
+
+{% endblock %}
