@@ -4,44 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ title or "Secure Flask Lab" }}</title>
-{#    <link rel="stylesheet" href="styles.css">#}
-    <style>
-    body {
-        background-color: darkseagreen;
-    }
-
-    h2 {
-        align-content: center;
-        color: black;
-        text-align: center;
-    }
-
-    .form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-        font-family: "Times New Roman";
-    }
-
-    p{
-        align-content: center;
-        color: black;
-        text-align: center;
-    }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav>
     {% if session.get("user_id") %}
         <a href="{{ url_for('profile') }}">Profile</a>
         <form action="{{ url_for('logout') }}" method="post" style="display:inline;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit">Logout</button>
         </form>
     {% else %}
         <a href="{{ url_for('login') }}">Login</a> |
         <a href="{{ url_for('register') }}">Register</a>
     {% endif %}
+
+    <span style="float:right;">
+        {{ now.strftime("%Y-%m-%d %H:%M:%S UTC") }}
+    </span>
     </nav>
 
     {% with messages = get_flashed_messages() %}
@@ -57,5 +37,6 @@
     <hr/>
 
     {% block content %}{% endblock %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

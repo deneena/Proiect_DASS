@@ -36,3 +36,7 @@ CREATE TABLE audit_logs(
     ip_address STRING NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
+
+ALTER TABLE users ADD COLUMN failed_attempts INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE users ADD COLUMN reset_token STRING;
+ALTER TABLE users ADD COLUMN reset_token_expiry TIMESTAMP;

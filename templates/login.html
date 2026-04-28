@@ -3,6 +3,7 @@
 <h2>Login</h2>
 <div class="form">
 <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label>Email</label><br/>
     <input name="email" /><br/><br/>
     <label>Password</label><br/>
@@ -13,14 +14,4 @@
 </form>
 </div>
 
-<script>
-    function pwVisibility() {
-        var x = document.getElementById("pw");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-    }
-</script>
 {% endblock %}

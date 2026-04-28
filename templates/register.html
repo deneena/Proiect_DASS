@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Register</h2>
+<h2>Register</h2><br/><br/>
 <div class="form">
     <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label>Email</label><br/>
         <input name="email" /><br/><br/>
         <label>Password</label><br/>
-        <input name="password" type="password" /><br/><br/>
+        <input name="password1" type="password" id="pw1"/>
+        <input type="checkbox" onclick="pwVisibility('pw1')">Show Password<br/>
+        <label>Confirm password</label><br/>
+        <input name="password2" type="password" id="pw2"/>
+        <input type="checkbox" onclick="pwVisibility('pw2')">Show Password<br/><br/>
         <label>Role</label><br/>
         <select id="role" name="role">
             <option value="analyst">Analyst</option>
@@ -15,4 +20,5 @@
         <button type="submit">Create account</button>
     </form>
 </div>
+
 {% endblock %}

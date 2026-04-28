@@ -1,0 +1,22 @@
+body {
+        background-color: darkseagreen;
+    }
+
+    h2 {
+        align-content: center;
+        color: black;
+        text-align: center;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Times New Roman";
+    }
+
+    p{
+        align-content: center;
+        color: black;
+        text-align: center;
+    }

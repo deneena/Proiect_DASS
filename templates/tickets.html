@@ -6,6 +6,7 @@
 <p><a href="{{ url_for('create_ticket') }}">+ Create Ticket</a></p>
 <div class="form">
 <form method="get">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="text" name="search" placeholder="Search..." value="{{ request.args.get('search', '') }}">
 
     <select name="severity">

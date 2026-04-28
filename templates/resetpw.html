@@ -4,6 +4,7 @@
 
 <div class="form">
 <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label>Email</label><br/>
     <input name="email" /><br/><br/>
 

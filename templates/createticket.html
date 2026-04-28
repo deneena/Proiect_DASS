@@ -5,6 +5,7 @@
 
 <div class="form">
 <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="text" name="title" placeholder="Title" required><br><br>
     <textarea name="description" placeholder="Description" required></textarea><br><br>
     <select name="severity" required>

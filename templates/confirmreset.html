@@ -5,6 +5,7 @@
 
 <div class="form">
 <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label>Token</label><br/>
     <input name="token" /><br/><br/>
     <label>New password</label><br/>
@@ -16,16 +17,5 @@
     <button type="submit">Reset Password</button>
 </form>
 </div>
-
-<script>
-function pwVisibility(id) {
-    var x = document.getElementById(id);
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
-    }
-}
-</script>
 
 {% endblock %}
